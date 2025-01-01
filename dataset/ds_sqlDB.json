@@ -1,0 +1,75 @@
+{
+	"name": "ds_sqlDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sqlDB",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Branch_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Dealer_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Model_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Revenue",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Units_Sold",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Date_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Day",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BranchName",
+				"type": "varchar"
+			},
+			{
+				"name": "DealerName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

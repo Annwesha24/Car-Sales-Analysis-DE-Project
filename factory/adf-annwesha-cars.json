@@ -1,0 +1,9 @@
+{
+	"name": "adf-annwesha-cars",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "68971a11-a655-428c-858c-35281abf0f56",
+		"tenantId": "67154c66-4cb2-476c-a474-ae431cd39390"
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"name": "ds_git",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_github",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"load_flag": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "Annwesha24/Car-Sales-Analysis-DE-Project/refs/heads/main/Raw%20Data/@{dataset().load_flag}",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
