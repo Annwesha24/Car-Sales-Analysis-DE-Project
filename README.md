@@ -22,7 +22,7 @@ This production-ready project is designed to analyze car sales data through an e
 
 3. **Raw Data Store**
 
-    - The raw data is stored in Azure Data Lake Gen2 -> Bronze Layer .
+    - The raw data is stored in Azure Data Lake Gen2 -> [**Bronze Layer**].
 
     - Data is saved in Parquet format for optimized storage and querying.
 
@@ -34,7 +34,7 @@ This production-ready project is designed to analyze car sales data through an e
 
 5. **Transformed Data**
 
-    - The transformed data is stored back in Azure Data Lake Gen2 -> Silver layer.
+    - The transformed data is stored back in Azure Data Lake Gen2 -> [**Silver layer**].
 
     - The output data is also saved in Parquet format.
 
@@ -42,7 +42,7 @@ This production-ready project is designed to analyze car sales data through an e
 
     - The processed and transformed data is prepared for serving.
 
-    - It is stored in Delta Lake on Azure Data Lake Gen2, which supports advanced data capabilities such as versioning and ACID transactions -> Gold Layer.
+    - It is stored in Delta Lake on Azure Data Lake Gen2, which supports advanced data capabilities such as versioning and ACID transactions -> [**Gold Layer**].
 
 7. **Incremental Data**
 
@@ -75,14 +75,17 @@ This production-ready project is designed to analyze car sales data through an e
     - Data Sources: Two CSV files (Sales Data and Incremental Data) are stored in GitHub.
     - Ingestion: Data is ingested from GitHub into an Azure SQL Database via Azure Data Factory. A water table is created in Azure SQL to track the max_date, ensuring that only the most recent data (or new data) is processed during the incremental load.
 
-3. **Transformation** (Azure SQL DB -> Databricks -> Azure Data Lake Gen2)
+2. **Raw Data Store** (Azure SQL DB -> Databricks -> Azure Data Lake Gen2)
+
+    - The raw data is stored in Azure Data Lake Gen2 -> [**Bronze Layer**].
+
+3. **Transformation** (Databricks -> Azure Data Lake Gen2)
 
     ![alt text](<Pipelines & Visualization/Data-Model Run.png>)
 
-    - Databricks Processing: Azure Databricks processes the data in 3 phases:
-    - The raw data from Azure SQL DB in Azure Data Lake Gen2 in Parquet format for efficient storage and further processing. -> **Bronze Layer**
-    - The data is transformed and stored as a large consolidated table. -> **Silver Layer**
-    - The Silver Layer data is then further refined into fact table and dimension table (*star schema*) structure for efficient analytical querying. -> **Gold Layer**
+    - Databricks Processing: Azure Databricks processes the data in 2 phases:
+    - The data is transformed and stored as a large consolidated table. -> [**Silver Layer**]
+    - The Silver Layer data is then further refined into fact table and dimension table (*star schema*) structure for efficient analytical querying. -> [**Gold Layer**]
 
 
 4. **Serving Layer**
