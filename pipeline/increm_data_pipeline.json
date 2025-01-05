@@ -5,6 +5,8 @@
 			{
 				"name": "Copy_Increm_Data",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "last_load",
@@ -75,6 +77,8 @@
 			{
 				"name": "current_load",
 				"type": "Lookup",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -133,6 +137,8 @@
 			{
 				"name": "WatermarkUpdate",
 				"type": "SqlServerStoredProcedure",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy_Increm_Data",
