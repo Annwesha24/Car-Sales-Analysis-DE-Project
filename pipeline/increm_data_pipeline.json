@@ -185,6 +185,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/CarsProject/silver_notebook"
+				},
 				"linkedServiceName": {
 					"referenceName": "ls_databricks",
 					"type": "LinkedServiceReference"
