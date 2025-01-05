@@ -6,104 +6,104 @@ This production-ready project is designed to analyze car sales data through an e
 
 ## Key Components of the Pipeline
 
-    1. **SQL Source**
+1. **SQL Source**
 
-    The data is ingested from GitHub and stored in an Azure SQL Database.
+    - The data is ingested from GitHub and stored in an Azure SQL Database.
 
-    This serves as the source for ingestion into the pipeline.
+    - This serves as the source for ingestion into the pipeline.
 
-    2. **Ingestion (Azure Data Factory)**
+2. **Ingestion (Azure Data Factory)**
 
-    Azure Data Factory orchestrates the ingestion of data from the SQL source into the pipeline.
+    - Azure Data Factory orchestrates the ingestion of data from the SQL source into the pipeline.
 
-    The ingested data is stored in Data Lake Gen2 in its raw form.
+    - The ingested data is stored in Data Lake Gen2 in its raw form.
 
-    3. **Raw Data Store**
+3. **Raw Data Store**
 
-    The raw data is stored in Azure Data Lake Gen2.
+    - The raw data is stored in Azure Data Lake Gen2.
 
-    Data is saved in Parquet format for optimized storage and querying.
+    - Data is saved in Parquet format for optimized storage and querying.
 
-    4. **Transformation (Databricks)**
+4. **Transformation (Databricks)**
 
-    Data transformation is performed using Azure Databricks.
+    - Data transformation is performed using Azure Databricks.
 
-    Databricks processes the raw data to generate transformed and cleaned datasets.
+    - Databricks processes the raw data to generate transformed and cleaned datasets.
 
-    5. **Transformed Data**
+5. **Transformed Data**
 
-    The transformed data is stored back in Azure Data Lake Gen2.
+    - The transformed data is stored back in Azure Data Lake Gen2.
 
-    The output data is also saved in Parquet format.
+    - The output data is also saved in Parquet format.
 
-    6. **Serving (Delta Lake)**
+6. **Serving (Delta Lake)**
 
-    The processed and transformed data is prepared for serving.
+    - The processed and transformed data is prepared for serving.
 
-    It is stored in Delta Lake on Azure Data Lake Gen2, which supports advanced data capabilities such as versioning and ACID transactions.
+    - It is stored in Delta Lake on Azure Data Lake Gen2, which supports advanced data capabilities such as versioning and ACID transactions.
 
-    7. **Incremental Data**
+7. **Incremental Data**
 
-    The pipeline supports incremental data processing to handle updates and new data efficiently.
+    - The pipeline supports incremental data processing to handle updates and new data efficiently.
 
-    8. **Data Modeling**
+8. **Data Modeling**
 
-    The data is modeled into two formats for downstream consumption:
+    - The data is modeled into two formats for downstream consumption:
 
-    One Big Table: Consolidates all relevant data.
+    - One Big Table: Consolidates all relevant data.
 
-    Star Schema: A structured model for analytics and reporting.
+    - Star Schema: A structured model for analytics and reporting.
 
-    9. **Security**
+9. **Security**
 
-    Azure Key Vault and Azure Active Directory (AAD) ensure secure access and authentication for the pipeline components.
+    - Azure Key Vault and Azure Active Directory (AAD) ensure secure access and authentication for the pipeline components.
 
 ---
 
 ## Pipeline Flow
 
-    **Source to Ingestion**: Data flows from GitHub to Azure SQL Database and then into Azure Data Factory for ingestion.
+1. **Source to Ingestion**: Data flows from GitHub to Azure SQL Database and then into Azure Data Factory for ingestion.
 
-    **Raw Storage**: The raw data is stored in Data Lake Gen2 as Parquet files.
+2. **Raw Storage**: The raw data is stored in Data Lake Gen2 as Parquet files.
 
-    **Transformation**: Azure Databricks processes the data and outputs transformed datasets.
+3. **Transformation**: Azure Databricks processes the data and outputs transformed datasets.
 
-    **Serving Layer**: The transformed data is stored in Delta Lake for serving to consumers.
+4. **Serving Layer**: The transformed data is stored in Delta Lake for serving to consumers.
 
-    **Data Models**: Incremental data updates are consolidated into a single table or structured as a star schema for analytics.
+5. **Data Models**: Incremental data updates are consolidated into a single table or structured as a star schema for analytics.
 
 ---
 
 ## Tools and Technologies Used
 
-    **GitHub**: Initial data source.
+1. **GitHub**: Initial data source.
 
-    **Azure SQL Database**: Centralized storage for raw data.
+2. **Azure SQL Database**: Centralized storage for raw data.
 
-    **Azure Data Factory**: Orchestration and ingestion.
+3. **Azure Data Factory**: Orchestration and ingestion.
 
-    **Azure Data Lake Gen2**: Storage for raw, transformed, and served data.
+4. **Azure Data Lake Gen2**: Storage for raw, transformed, and served data.
 
-    **Databricks**: Data transformation and processing.
+5. **Databricks**: Data transformation and processing.
 
-    **Delta Lake**: Enhanced data storage and serving.
+6. **Delta Lake**: Enhanced data storage and serving.
 
-    **Parquet Format**: Optimized file format for data storage.
+7. **Parquet Format**: Optimized file format for data storage.
 
-    **Azure Key Vault**: Security for keys and secrets.
+8. **Azure Key Vault**: Security for keys and secrets.
 
-    **Azure Active Directory (AAD)**: Authentication and access control.
+9. **Azure Active Directory (AAD)**: Authentication and access control.
 
 ---
 
 ## Use Cases
 
-    Data ingestion from GitHub repositories to Azure SQL Database.
+1. Data ingestion from GitHub repositories to Azure SQL Database.
 
-    Transformation and cleaning of large datasets.
+2. Transformation and cleaning of large datasets.
 
-    Secure and efficient storage of raw and processed data.
+3. Secure and efficient storage of raw and processed data.
 
-    Serving data for analytics and reporting with structured models.
+4. Serving data for analytics and reporting with structured models.
 
 ---
