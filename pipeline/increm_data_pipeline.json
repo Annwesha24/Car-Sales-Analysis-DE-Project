@@ -196,7 +196,14 @@
 			{
 				"name": "Branch Dimension",
 				"type": "DatabricksNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Silver Notebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -214,9 +221,16 @@
 				}
 			},
 			{
-				"name": "Notebook2",
+				"name": "Date Dimension",
 				"type": "DatabricksNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Silver Notebook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -224,10 +238,17 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/CarsProject/gold_dim_date"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
-				"name": "Notebook3",
+				"name": "Dealer Dimension",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -237,10 +258,17 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/CarsProject/gold_dim_dealer"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
-				"name": "Notebook4",
+				"name": "Model Dimension",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -250,7 +278,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/CarsProject/gold_dim_model"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": [],
