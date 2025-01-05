@@ -167,7 +167,7 @@
 				}
 			},
 			{
-				"name": "Notebook1",
+				"name": "Silver Notebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
