@@ -133,8 +133,6 @@
 			{
 				"name": "WatermarkUpdate",
 				"type": "SqlServerStoredProcedure",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy_Increm_Data",
