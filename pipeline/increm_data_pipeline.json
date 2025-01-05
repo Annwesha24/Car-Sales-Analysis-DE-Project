@@ -194,7 +194,7 @@
 				}
 			},
 			{
-				"name": "Notebook1",
+				"name": "Branch Dimension",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
@@ -204,7 +204,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/CarsProject/gold_dim_branch"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_databricks",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
 				"name": "Notebook2",
