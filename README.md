@@ -1,6 +1,6 @@
 # Car-Sales-Analysis-DE-Project
 
-![Architechture](image.png)
+![Architechture](Images/image.png)
 
 This production-ready project is designed to analyze car sales data through an end-to-end ETL pipeline. It seamlessly integrates data ingestion from GitHub, links it to Azure SQL Database for storage, and employs Azure services for transformation. Using Azure Data Factory, Azure Data Lake Gen2, Databricks, and Unity Catalog for secure access (via access tokens), the pipeline is architected on the medallion framework. It delivers a consolidated table for data scientists and a star schema for data analysts, enabling robust analytics and impactful visualizations.
 
@@ -78,7 +78,7 @@ This production-ready project is designed to analyze car sales data through an e
 
 ## Tools and Technologies Used
 
-1. **GitHub**: Initial data source.
+1. ![**GitHub**](Image/image-1.png): Initial data source.
 
 2. **Azure SQL Database**: Centralized storage for raw data.
 
