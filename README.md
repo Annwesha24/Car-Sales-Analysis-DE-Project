@@ -1,6 +1,6 @@
 # Car-Sales-Analysis-DE-Project
 
-![Architechture](Images/image.png)
+Architechture](Images/image.png)
 
 This production-ready project is designed to analyze car sales data through an end-to-end ETL pipeline. It seamlessly integrates data ingestion from GitHub, links it to Azure SQL Database for storage, and employs Azure services for transformation. Using Azure Data Factory, Azure Data Lake Gen2, Databricks, and Unity Catalog for secure access (via access tokens), the pipeline is architected on the medallion framework. It delivers a consolidated table for data scientists and a star schema for data analysts, enabling robust analytics and impactful visualizations.
 
@@ -22,7 +22,7 @@ This production-ready project is designed to analyze car sales data through an e
 
 3. **Raw Data Store**
 
-    - The raw data is stored in Azure Data Lake Gen2.
+    - The raw data is stored in Azure Data Lake Gen2 -> Bronze Layer .
 
     - Data is saved in Parquet format for optimized storage and querying.
 
@@ -34,7 +34,7 @@ This production-ready project is designed to analyze car sales data through an e
 
 5. **Transformed Data**
 
-    - The transformed data is stored back in Azure Data Lake Gen2.
+    - The transformed data is stored back in Azure Data Lake Gen2 -> Silver layer.
 
     - The output data is also saved in Parquet format.
 
@@ -42,9 +42,11 @@ This production-ready project is designed to analyze car sales data through an e
 
     - The processed and transformed data is prepared for serving.
 
-    - It is stored in Delta Lake on Azure Data Lake Gen2, which supports advanced data capabilities such as versioning and ACID transactions.
+    - It is stored in Delta Lake on Azure Data Lake Gen2, which supports advanced data capabilities such as versioning and ACID transactions -> Gold Layer.
 
 7. **Incremental Data**
+
+    - Only one pipeline for both Source Data and Incremental Data
 
     - The pipeline supports incremental data processing to handle updates and new data efficiently.
 
@@ -64,37 +66,53 @@ This production-ready project is designed to analyze car sales data through an e
 
 ## Pipeline Flow
 
-1. **Source to Ingestion**: Data flows from GitHub to Azure SQL Database and then into Azure Data Factory for ingestion.
+![alt text](<Pipelines & Visualization/Incremental Data pipeline.png>)
 
-2. **Raw Storage**: The raw data is stored in Data Lake Gen2 as Parquet files.
+1. **Source to Ingestion** (GitHub -> Azure SQL DB)
 
-3. **Transformation**: Azure Databricks processes the data and outputs transformed datasets.
+    ![alt text](<Pipelines & Visualization/Ingest Data from Git.png>)
 
-4. **Serving Layer**: The transformed data is stored in Delta Lake for serving to consumers.
+    - Data Sources: Two CSV files (Sales Data and Incremental Data) are stored in GitHub.
+    - Ingestion: Data is ingested from GitHub into an Azure SQL Database via Azure Data Factory. A water table is created in Azure SQL to track the max_date, ensuring that only the most recent data (or new data) is processed during the incremental load.
 
-5. **Data Models**: Incremental data updates are consolidated into a single table or structured as a star schema for analytics.
+3. **Transformation** (Azure SQL DB -> Databricks -> Azure Data Lake Gen2)
+
+    ![alt text](<Pipelines & Visualization/Data-Model Run.png>)
+
+    - Databricks Processing: Azure Databricks processes the data in 3 phases:
+    - The raw data from Azure SQL DB in Azure Data Lake Gen2 in Parquet format for efficient storage and further processing. -> **Bronze Layer**
+    - The data is transformed and stored as a large consolidated table. -> **Silver Layer**
+    - The Silver Layer data is then further refined into fact table and dimension table (*star schema*) structure for efficient analytical querying. -> **Gold Layer**
+
+
+4. **Serving Layer**
+
+    ![alt text](<Pipelines & Visualization/visualization.png>)
+
+    - The Gold Layer, stored in Delta Lake, is used to serve transformed and structured data to consumers, ensuring high performance for analytical queries.
 
 ---
 
 ## Tools and Technologies Used
 
-1. ![**GitHub**](Images/image-1.png): Initial data source, API Connections.
+1. **GitHub**: Initial data source, API Connections.
 
-2. ![**Azure SQL Database**](Images/10130-icon-service-SQL-Database.svg): Centralized storage for raw data.
+2. **Azure SQL Database**: Centralized storage for raw data.
 
-3. ![**Azure Data Factory**](Images/10126-icon-service-Data-Factories.svg): Orchestration and ingestion.
+3. **Azure Data Factory**: Orchestration and ingestion.
 
-4. ![**Azure Data Lake Gen2**](Images/datalake.png): Storage for raw, transformed, and served data.
+4. **Azure Data Lake Gen2**: Storage for raw, transformed, and served data.
 
-5. ![**Databricks**](Images/10787-icon-service-Azure-Databricks.svg): Data transformation and processing.
+5. **Databricks**: Data transformation and processing.
 
-6. ![**Delta Lake**](Images/deltalake.png): Enhanced data storage and serving.
+6. **Delta Lake**: Enhanced data storage and serving.
 
-7. ![**Parquet Format**](Images/parquet.webp): Optimized file format for data storage.
+7. **Parquet Format**: Optimized file format for data storage.
 
-8. ![**Apache Spark**](Images/apache-spark.png): Transform data with PySpark.
+8. **Apache Spark**: Transform data with PySpark.
 
-9. ![**Unity Catalog**](Images/Unity Catalog.jpeg): Governance with Unity Catalog
+9. **Unity Catalog**: Governance with Unity Catalog.
+
 ---
 
 ## Use Cases
