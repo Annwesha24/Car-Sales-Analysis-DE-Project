@@ -78,24 +78,23 @@ This production-ready project is designed to analyze car sales data through an e
 
 ## Tools and Technologies Used
 
-1. ![**GitHub**](Image/image-1.png): Initial data source.
+1. ![**GitHub**](Images/image-1.png): Initial data source, API Connections.
 
-2. **Azure SQL Database**: Centralized storage for raw data.
+2. ![**Azure SQL Database**](Images/10130-icon-service-SQL-Database.svg): Centralized storage for raw data.
 
-3. **Azure Data Factory**: Orchestration and ingestion.
+3. ![**Azure Data Factory**](Images/10126-icon-service-Data-Factories.svg): Orchestration and ingestion.
 
-4. **Azure Data Lake Gen2**: Storage for raw, transformed, and served data.
+4. ![**Azure Data Lake Gen2**](Images/datalake.png): Storage for raw, transformed, and served data.
 
-5. **Databricks**: Data transformation and processing.
+5. ![**Databricks**](Images/10787-icon-service-Azure-Databricks.svg): Data transformation and processing.
 
-6. **Delta Lake**: Enhanced data storage and serving.
+6. ![**Delta Lake**](Images/deltalake.png): Enhanced data storage and serving.
 
-7. **Parquet Format**: Optimized file format for data storage.
+7. ![**Parquet Format**](Images/parquet.webp): Optimized file format for data storage.
 
-8. **Azure Key Vault**: Security for keys and secrets.
+8. ![**Apache Spark**](Images/apache-spark.png): Transform data with PySpark.
 
-9. **Azure Active Directory (AAD)**: Authentication and access control.
-
+9. ![**Unity Catalog**](Images/Unity Catalog.jpeg): Governance with Unity Catalog
 ---
 
 ## Use Cases
